@@ -1,18 +1,30 @@
-NAME = 
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: eburnet <eburnet@student.42.fr>            +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2025/01/29 10:12:18 by eburnet           #+#    #+#              #
+#    Updated: 2025/01/29 10:14:02 by eburnet          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+NAME = canon
 CC = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98
-SRCS = Fixed.cpp  Fixed.hpp  main.cpp
-OBJS = $(SRCS:.cpp=.o)
-HEADER = Zombie.hpp
+SRCS = main.cpp Fixed.cpp
+OBJS = $(SRC:.cpp=.o)
+HEADERS = Fixed.hpp
 
-%.o: %.cpp $(HEADER)
-	$(CC) $(CFLAGS) -c $< -o $@
+%.o: %.cpp
+	$(CC) $(FLAGS) -c $< -o $@
+
+$(NAME): $(OBJS)
+	$(CC) $(FLAGS) $(SRCS) -o $(NAME)
 
 all: $(NAME)
-
-$(NAME): $(OBJS) 
-	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
-
+	
 clean:
 	rm -f $(OBJS)
 
@@ -21,4 +33,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY : all clean fclean re
+.PHONY: all clean fclean re%  
