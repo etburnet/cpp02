@@ -6,7 +6,7 @@
 /*   By: eburnet <eburnet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 14:37:47 by eburnet           #+#    #+#             */
-/*   Updated: 2025/01/30 15:04:25 by eburnet          ###   ########.fr       */
+/*   Updated: 2025/01/31 13:24:48 by eburnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,18 +31,18 @@ class Fixed
 		int operator>(const Fixed&);
 		int operator==(const Fixed&);
 		int operator!=(const Fixed&);
-		const Fixed& operator+(const Fixed&);
-		const Fixed& operator-(const Fixed&);
-		Fixed& operator*(const Fixed&);
-		Fixed& operator/(const Fixed&);
-		int operator--();
-		int operator++();
-		int operator--(int);
-		int operator++(int);
-		int min(int &ref_nb1, int &ref_nb2);
-		int min_const(const int &ref_nb1, const int &ref_nb2);
-		int max(int &ref_nb1, int &ref_nb2);
-		int max_const(const int &ref_nb1, const int &ref_nb2);
+		const Fixed operator+(const Fixed&);
+		const Fixed operator-(const Fixed&);
+		const Fixed operator*(const Fixed&);
+		const Fixed operator/(const Fixed&);
+		Fixed& operator--();
+		Fixed& operator++();
+		Fixed operator--(int);
+		Fixed operator++(int);
+		static Fixed& min(Fixed &ref_nb1, Fixed &ref_nb2);
+		const static Fixed& min(const Fixed &ref_nb1, const Fixed &ref_nb2);
+		static Fixed& max(Fixed &ref_nb1, Fixed &ref_nb2);
+		const static Fixed& max(const Fixed &ref_nb1, const Fixed &ref_nb2);
 		int getRawBits(void) const;
 		void setRawBits(int const raw);
 		float toFloat(void) const;
