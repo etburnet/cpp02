@@ -6,7 +6,7 @@
 /*   By: eburnet <eburnet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 09:37:30 by eburnet           #+#    #+#             */
-/*   Updated: 2025/01/30 11:30:36 by eburnet          ###   ########.fr       */
+/*   Updated: 2025/02/03 10:41:57 by eburnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ Fixed& Fixed::operator=(const Fixed& other)
 std::ostream& operator<<(std::ostream& os, const Fixed &other)
 {
 	os << other.toFloat();
-    return os; 
+	return os; 
 }
 
 Fixed::Fixed(const Fixed& other)

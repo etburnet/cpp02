@@ -6,7 +6,7 @@
 /*   By: eburnet <eburnet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 09:37:30 by eburnet           #+#    #+#             */
-/*   Updated: 2025/01/31 15:14:20 by eburnet          ###   ########.fr       */
+/*   Updated: 2025/02/03 11:35:04 by eburnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,12 +104,16 @@ int Fixed::operator!=(const Fixed& other)
 
 const Fixed Fixed::operator+(const Fixed& other)
 {
-	return Fixed(value + other.value);
+    Fixed result;
+    result.value = this->value + other.value;
+    return result;
 }
 
 const Fixed Fixed::operator-(const Fixed& other)
 {
-	return Fixed(value - other.value);
+    Fixed result;
+    result.value = this->value - other.value;
+    return result;
 }
 
 const Fixed Fixed::operator*(const Fixed& other)
@@ -121,7 +125,9 @@ const Fixed Fixed::operator*(const Fixed& other)
 
 const Fixed Fixed::operator/(const Fixed& other)
 {
-	return Fixed(value / other.value);
+	Fixed result;
+	result.value = (this->value * (1 << nb_bits)) / other.value;
+	return result;
 }
 
 Fixed& Fixed::operator--()
@@ -164,10 +170,10 @@ int Fixed::toInt(void) const
 
 Fixed& Fixed::min(Fixed &ref_nb1, Fixed &ref_nb2)
 {
-	if (ref_nb1 > ref_nb2)
-		return (ref_nb2);
-	else
+	if (ref_nb1 < ref_nb2)
 		return (ref_nb1);
+	else
+		return (ref_nb2);
 }
 
 const Fixed& Fixed::min(const Fixed &ref_nb1, const Fixed &ref_nb2)
@@ -175,10 +181,10 @@ const Fixed& Fixed::min(const Fixed &ref_nb1, const Fixed &ref_nb2)
 	Fixed cp_nb1 = ref_nb1;
 	Fixed cp_nb2 = ref_nb2;
 
-	if (cp_nb1 > cp_nb2)
-		return (ref_nb2);
-	else
+	if (cp_nb1 < cp_nb2)
 		return (ref_nb1);
+	else
+		return (ref_nb2);
 }
 
 Fixed& Fixed::max(Fixed &ref_nb1, Fixed &ref_nb2)
